@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'main/index_styles.css' %}">
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+
+    <div id='register'>
+      <h2>Register</h2>
+      <form action="{% url 'main:register' %}" method="POST">
+        {% csrf_token %}
+        <label for="name">Name</label>
+        <input type='text' name='name' />
+        <label for="username">Username</label>
+        <input type='text' name='username' />
+        <label for="email">email</label>
+        <input type='text' name='email' />
+        <label for="password">Password:</label>
+        <input type='password' name='password' />
+        <p>*Password should be at least 8 characters</p>
+        <label for="confirm_pw">Confirm PW:</label>
+        <input type='password' name='confirm_pw' />
+        <input type='submit' value='Register' />
+    </form>
+    {% if messages  %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <div id="login">
+    <h2>Login</h2>
+
+    <form action="{% url 'main:login' %}" method="POST">
+    {% csrf_token %}
+    <label for="email">Username: </label>
+    <input type='text' name='username' />
+    <label for="password">Password:</label>
+    <input type='password' name='password' />
+    <input type='submit' value='Login' />
+  </form>
+  </div>
+
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a trip</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'main/add_styles.css' %}">
+  </head>
+  <body>
+    <a href="{% url 'main:travels' %}">Home</a>
+    <a href="{% url 'main:logout' %}">logout</a>
+    <h1>Add a Trip</h1>
+      <form action="{% url 'main:create' %}" method="POST">
+        {% csrf_token %}
+        <label for="destination">Destination: </label>
+        <input type='text' name='destination' />
+        <label for="description">Description: </label>
+        <input type='text' name='description' />
+        <label for="start_date" name='start_date'>Travel Date Start: </label>
+        <input type='text' name='start_date' />
+        <label for="end_date" name='end_date'>Travel Date End: </label>
+        <input type='text' name='end_date' />
+        <input type='submit' value='Add' />
+      </form>
+      {% if messages  %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travels</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'main/travels_styles.css' %}">
+  </head>
+  <body>
+    <a href="{% url 'main:logout' %}">logout</a>
+    <h1>Hello, {{request.session.name}}</h1>
+    <table>
+      <h2>Your Trip Schedules</h2>
+      <thead>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Plan</th>
+      </thead>
+      <tbody>
+        {% for travel in travels %}
+          <tr>
+            <td>{{travel.destination}}</td>
+            <td>{{travel.start_date}}</td>
+            <td>{{travel.end_date}}</td>
+            <td>{{travel.description}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table>
+      <h2>Other User's Travel Plans</h2>
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End Date</th>
+          <th>Do you want to join?</th>
+        </thead>
+        <tbody>
+          {% for travel in travels %}
+            <tr>
+              <td><a href="{% url 'main:destination' travel.id %}">{{travel.destination}}</a></td>
+              <td>{{travel.description}}</td>
+              <td>{{travel.start_date}}</td>
+              <td>{{travel.end_date}}</td>
+              <td><a href="{% url 'main:add' %}">Join</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </table>
+    <a href="{% url 'main:add' %}">Add Travel Plan</a>
+  </body>
+</html>

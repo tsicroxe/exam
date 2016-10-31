@@ -1,0 +1,11 @@
+#register{
+  display: inline-block;
+}
+#login{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 30px;
+}
+  label{
+    display: block;
+  }
