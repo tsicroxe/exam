@@ -105,6 +105,9 @@ def travels(request):
     # user_to_exclude = User.objects.filter(id=request.session['id'])
     # other_users = Travel.objects.exclude(users=user_to_exclude)
     # other_users = User.objects.filter(id=other_users.id)
+
+    # Joins are the death of me. I got bogged up on the datetimefield and joins
+
     context = {
     'travels':Travel.objects.all(),
     'other_users':User.objects.all()

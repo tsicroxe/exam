@@ -13,9 +13,4 @@ urlpatterns = [
     url(r'^logout$', views.logout, name='logout'),
     url(r'^travels/create$', views.create, name='create'),
     url(r'^travels/destination/(?P<id>\d+)$', views.destination, name='destination'),
-    # url(r'^new$', views.new, name='new'),
-    # url(r'^show/(?P<id>\d+)$', views.show, name='show'),
-    # url(r'^edit/(?P<id>\d+)$', views.edit, name='edit'),
-    # url(r'^update/(?P<id>\d+)$', views.update, name='update'),
-
 ]
